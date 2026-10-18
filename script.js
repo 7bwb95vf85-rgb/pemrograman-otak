@@ -1,89 +1,17 @@
-const year = document.querySelector("#year");
-year.textContent = new Date().getFullYear();
-
-const menuToggle = document.querySelector("#menuToggle");
-const navLinks = document.querySelector("#navLinks");
-
-menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu" : "Buka menu");
-});
-
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
-});
-
-const searchInput = document.querySelector("#searchInput");
-const articleCards = [...document.querySelectorAll(".article-card")];
-const noResults = document.querySelector("#noResults");
-
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.trim().toLowerCase();
-  let visibleCount = 0;
-  articleCards.forEach((card) => {
-    const content = (card.innerText + " " + card.dataset.search).toLowerCase();
-    const matches = content.includes(query);
-    card.hidden = !matches;
-    if (matches) visibleCount++;
-  });
-  noResults.hidden = visibleCount !== 0;
-});
-
-const articleContent = {
-  neuro: {
-    category: "ILMU SARAF",
-    title: "Apa Itu Neuroplastisitas?",
-    text: "Neuroplastisitas adalah kemampuan sistem saraf untuk berubah sebagai respons terhadap pengalaman dan pembelajaran. Latihan berulang dapat membantu keterampilan berkembang, tetapi tidak berarti otak bisa diprogram secara instan. Perubahan dipengaruhi banyak hal, termasuk kualitas latihan, istirahat, dan lingkungan."
-  },
-  positive: {
-    category: "PSIKOLOGI",
-    title: "Berpikir Positif Secara Realistis",
-    text: "Berpikir positif bukan berarti menyangkal masalah atau memaksa diri selalu bahagia. Cobalah mengenali pikiran otomatis, memeriksa bukti, dan mencari tafsiran yang lebih seimbang. Contoh: ubah 'Aku pasti gagal' menjadi 'Aku belum tahu hasilnya; aku bisa mempersiapkan diri dan mencoba langkah berikutnya.'"
-  },
-  mindful: {
-    category: "LATIHAN",
-    title: "Mengamati Pikiran Tanpa Mengikutinya",
-    text: "Pikiran datang dan pergi. Dalam latihan mindfulness, kita mencoba menyadari pikiran tanpa harus langsung mempercayai atau menolaknya. Arahkan perhatian ke napas atau sensasi kaki menyentuh lantai selama beberapa menit. Jika latihan terasa tidak nyaman, berhenti dan pilih cara yang lebih aman."
-  }
-};
-
-const dialog = document.querySelector("#articleDialog");
-document.querySelectorAll(".read-more").forEach((button) => {
-  button.addEventListener("click", () => {
-    const article = articleContent[button.dataset.article];
-    document.querySelector("#dialogCategory").textContent = article.category;
-    document.querySelector("#dialogTitle").textContent = article.title;
-    document.querySelector("#dialogText").textContent = article.text;
-    dialog.showModal();
-  });
-});
-
-document.querySelector("#dialogClose").addEventListener("click", () => dialog.close());
-
-dialog.addEventListener("click", (event) => {
-  if (event.target === dialog) dialog.close();
-});
-
-document.querySelector("#reframeButton").addEventListener("click", () => {
-  const thought = document.querySelector("#thoughtInput").value.trim();
-  const result = document.querySelector("#reflectionResult");
-  if (!thought) {
-    result.textContent = "Tuliskan satu pikiran terlebih dahulu, lalu kita periksa bersama.";
-    return;
-  }
-  result.textContent = `Kamu menulis: “${thought}” Coba tanyakan: Apa bukti yang mendukung pikiran ini? Apa yang belum aku ketahui? Apa penjelasan lain yang masuk akal? Apa satu langkah kecil yang bisa kulakukan sekarang?`;
-});
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const target = document.querySelector(link.getAttribute("href"));
-    if (target) {
-      event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-});
+const articles={
+otak:{category:"KENALI OTAK",title:"Bagaimana otak bekerja?",body:`<p>Otak membantu kita memahami lingkungan, mengingat pengalaman, menggerakkan tubuh, dan mengatur banyak proses penting. Berbagai bagian otak bekerja sama, bukan sebagai tombol terpisah untuk setiap pikiran atau emosi.</p><h3>Pikiran, emosi, dan pengalaman</h3><p>Pengalaman dapat memengaruhi cara kita menafsirkan situasi. Dua orang bisa merespons kejadian yang sama dengan cara berbeda karena pengalaman, kondisi tubuh, perhatian, dan konteks mereka tidak selalu sama.</p><h3>Mulai dari hal sederhana</h3><ul><li>Amati apa yang kamu rasakan tanpa langsung menghakimi diri.</li><li>Perhatikan apakah kamu sedang lelah, lapar, atau stres.</li><li>Berikan jeda sebelum memutuskan bagaimana akan merespons.</li></ul><p>Memahami otak bukan berarti kita bisa mengendalikan semua pikiran. Tujuannya adalah mengenali diri dan membuat pilihan yang lebih sadar.</p>`},
+neuro:{category:"NEUROPLASTISITAS",title:"Otak bisa terus belajar",body:`<p>Neuroplastisitas adalah kemampuan sistem saraf untuk berubah sebagai respons terhadap pengalaman, pembelajaran, dan latihan. Perubahan dapat melibatkan kekuatan koneksi antarsel saraf dan cara jaringan otak bekerja.</p><h3>Mendukung proses belajar</h3><ul><li>Latih keterampilan secara teratur dalam porsi yang masuk akal.</li><li>Berikan waktu untuk tidur dan beristirahat.</li><li>Ulangi latihan dan gunakan umpan balik untuk memperbaiki cara belajar.</li></ul><p>Perubahan tidak selalu cepat atau mudah. Kemajuan tiap orang berbeda, dan tidak semua kebiasaan bisa berubah hanya dengan berpikir positif.</p>`},
+habit:{category:"KEBIASAAN",title:"Bangun kebiasaan kecil",body:`<p>Kebiasaan lebih mudah dibangun ketika tindakan yang ingin dilakukan jelas, sederhana, dan punya pemicu yang mudah dikenali. Jangan menunggu motivasi sempurna untuk memulai.</p><h3>Coba pola sederhana</h3><ul><li><b>Pilih satu tindakan:</b> misalnya membaca dua halaman.</li><li><b>Tentukan pemicu:</b> setelah sarapan atau sebelum tidur.</li><li><b>Buat versi kecil:</b> cukup dua menit saat hari sibuk.</li><li><b>Tinjau kembali:</b> lihat apa yang membantu dan menghambat.</li></ul><p>Jika satu hari terlewat, itu bukan berarti semuanya gagal. Mulai lagi pada kesempatan berikutnya.</p>`},
+focus:{category:"FOKUS & PIKIRAN",title:"Berpikir lebih jernih",body:`<p>Pikiran yang muncul tidak selalu merupakan fakta atau ramalan yang akurat. Kadang pikiran dipengaruhi oleh rasa takut, kelelahan, atau pengalaman sebelumnya.</p><h3>Periksa pikiran dengan lembut</h3><ul><li>Apa fakta yang benar-benar saya ketahui?</li><li>Apakah ada penjelasan lain yang masuk akal?</li><li>Apa yang akan saya katakan kepada teman yang mengalami hal sama?</li><li>Apa satu langkah kecil yang bisa saya lakukan sekarang?</li></ul><p>Latihan ini bukan pengganti bantuan profesional. Jika kecemasan atau kesedihan terus mengganggu kehidupan sehari-hari, pertimbangkan berbicara dengan tenaga kesehatan tepercaya.</p>`}};
+const toggle=document.getElementById("menuToggle"),nav=document.getElementById("siteNav");
+toggle.addEventListener("click",()=>{const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open));toggle.textContent=open?"×":"☰"});
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");toggle.textContent="☰";toggle.setAttribute("aria-expanded","false")}));
+const dialog=document.getElementById("articleDialog");
+document.querySelectorAll(".article-open").forEach(btn=>btn.addEventListener("click",()=>{const a=articles[btn.dataset.article];if(!a)return;document.getElementById("dialogCategory").textContent=a.category;document.getElementById("dialogTitle").textContent=a.title;document.getElementById("dialogBody").innerHTML=a.body;if(dialog.showModal)dialog.showModal();else dialog.setAttribute("open","")}));
+function closeDialog(){if(dialog.close)dialog.close();else dialog.removeAttribute("open")}
+document.getElementById("closeDialog").addEventListener("click",closeDialog);document.getElementById("dialogDone").addEventListener("click",closeDialog);dialog.addEventListener("click",e=>{if(e.target===dialog)closeDialog()});
+const thought=document.getElementById("thoughtInput"),reframe=document.getElementById("reframeInput"),status=document.getElementById("saveStatus"),key="programOtakReflectionV2";
+try{const saved=JSON.parse(localStorage.getItem(key)||"null");if(saved){thought.value=saved.thought||"";reframe.value=saved.reframe||""}}catch(e){}
+document.getElementById("saveReflection").addEventListener("click",()=>{try{localStorage.setItem(key,JSON.stringify({thought:thought.value,reframe:reframe.value}));status.textContent="Catatan tersimpan di browser perangkat ini."}catch(e){status.textContent="Penyimpanan browser tidak tersedia. Salin catatanmu secara manual."}});
+document.getElementById("clearReflection").addEventListener("click",()=>{thought.value="";reframe.value="";try{localStorage.removeItem(key)}catch(e){}status.textContent="Kolom catatan sudah dikosongkan."});
+document.getElementById("year").textContent=new Date().getFullYear();
