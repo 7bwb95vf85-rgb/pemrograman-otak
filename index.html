@@ -1,120 +1,15 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Program Otak: belajar tentang otak, psikologi, neuroplastisitas, dan kebiasaan berdasarkan sains.">
-  <title>Program Otak — Pahami Pikiranmu</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header class="navbar">
-    <a class="brand" href="#beranda" aria-label="Program Otak beranda">
-      <span class="brand-icon">🧠</span><span>Program <b>Otak</b></span>
-    </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
-    <nav id="navLinks">
-      <a href="#beranda">Beranda</a>
-      <a href="#topik">Topik</a>
-      <a href="#artikel">Artikel</a>
-      <a href="#latihan">Latihan</a>
-      <a href="#tentang">Tentang</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="beranda">
-      <div class="hero-content">
-        <p class="eyebrow">PSIKOLOGI • ILMU SARAF • PENGEMBANGAN DIRI</p>
-        <h1>Kenali pikiranmu.<br><span>Latih dirimu.</span></h1>
-        <p class="hero-copy">Belajar memahami otak, membangun kebiasaan, dan melatih pola pikir dengan pendekatan yang realistis dan berbasis sains.</p>
-        <a class="button" href="#artikel">Mulai belajar <span aria-hidden="true">→</span></a>
-        <p class="hero-note">Bukan tentang mengendalikan semua pikiran, tetapi belajar memilih respons yang lebih baik.</p>
-      </div>
-      <div class="brain-art" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="brain-emoji">🧠</div>
-        <span class="float-chip chip-one">Belajar</span>
-        <span class="float-chip chip-two">Kebiasaan</span>
-        <span class="float-chip chip-three">Fokus</span>
-      </div>
-    </section>
-
-    <section class="section" id="topik">
-      <div class="section-heading">
-        <div><p class="eyebrow">JELAJAHI</p><h2>Mulai dari topik dasar</h2></div>
-        <p>Bangun pemahaman sedikit demi sedikit.</p>
-      </div>
-      <div class="topic-grid">
-        <article class="topic-card"><div class="topic-icon">🧠</div><h3>Mengenal Otak</h3><p>Kenali cara kerja ingatan, emosi, perhatian, dan proses belajar.</p><a href="#artikel">Pelajari topik →</a></article>
-        <article class="topic-card"><div class="topic-icon">🔁</div><h3>Neuroplastisitas</h3><p>Pahami bagaimana pengalaman dan latihan membantu otak beradaptasi.</p><a href="#artikel">Pelajari topik →</a></article>
-        <article class="topic-card"><div class="topic-icon">🌱</div><h3>Kebiasaan Positif</h3><p>Mulai dengan tindakan kecil yang realistis dan bisa diulang.</p><a href="#latihan">Coba latihan →</a></article>
-        <article class="topic-card"><div class="topic-icon">🎯</div><h3>Fokus & Perhatian</h3><p>Latih perhatian dan belajar kembali saat pikiran mulai mengembara.</p><a href="#latihan">Coba latihan →</a></article>
-      </div>
-    </section>
-
-    <section class="section articles-section" id="artikel">
-      <div class="section-heading">
-        <div><p class="eyebrow">PERPUSTAKAAN</p><h2>Artikel pilihan</h2></div>
-        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari artikel..." aria-label="Cari artikel"></label>
-      </div>
-      <div class="article-grid" id="articleGrid">
-        <article class="article-card" data-search="neuroplastisitas otak belajar berubah koneksi">
-          <div class="article-art art-blue">🧠</div><div class="article-body"><span class="tag">ILMU SARAF</span><h3>Apa Itu Neuroplastisitas?</h3><p>Otak dapat beradaptasi melalui pengalaman dan latihan. Namun, perubahan butuh waktu dan tidak terjadi secara ajaib.</p><button class="text-button read-more" data-article="neuro">Baca ringkasan →</button></div>
-        </article>
-        <article class="article-card" data-search="pikiran positif realistis psikologi kebiasaan">
-          <div class="article-art art-sun">🌅</div><div class="article-body"><span class="tag">PSIKOLOGI</span><h3>Berpikir Positif Secara Realistis</h3><p>Bukan menyangkal masalah, tetapi melihat fakta, pilihan, dan langkah berikutnya dengan lebih seimbang.</p><button class="text-button read-more" data-article="positive">Baca ringkasan →</button></div>
-        </article>
-        <article class="article-card" data-search="mindfulness perhatian napas emosi">
-          <div class="article-art art-purple">☁️</div><div class="article-body"><span class="tag">LATIHAN</span><h3>Mengamati Pikiran Tanpa Mengikutinya</h3><p>Latihan perhatian membantu kita menyadari pikiran tanpa harus langsung mempercayai semuanya.</p><button class="text-button read-more" data-article="mindful">Baca ringkasan →</button></div>
-        </article>
-      </div>
-      <p id="noResults" class="no-results" hidden>Artikel tidak ditemukan. Coba kata kunci lain.</p>
-    </section>
-
-    <section class="practice-section" id="latihan">
-      <div class="practice-copy">
-        <p class="eyebrow">LATIHAN SINGKAT</p>
-        <h2>Berhenti sejenak.<br>Periksa pikiranmu.</h2>
-        <p>Ketika muncul pikiran “Aku pasti gagal”, coba jangan langsung mempercayainya. Gunakan langkah berikut untuk mencari respons yang lebih seimbang.</p>
-        <ol>
-          <li>Namai pikiran yang muncul.</li>
-          <li>Tanyakan: fakta apa yang benar-benar aku tahu?</li>
-          <li>Pilih satu langkah kecil yang bisa dilakukan.</li>
-        </ol>
-      </div>
-      <div class="practice-box">
-        <div class="practice-number">LATIHAN 01</div>
-        <h3>Ubah sudut pandang</h3>
-        <label for="thoughtInput">Tuliskan pikiran yang sedang mengganggu:</label>
-        <textarea id="thoughtInput" rows="3" placeholder="Contoh: Aku tidak akan bisa mempelajari ini..."></textarea>
-        <button class="button" id="reframeButton">Buat pertanyaan refleksi</button>
-        <div id="reflectionResult" class="reflection-result" aria-live="polite"></div>
-        <p class="small-note">Ini alat refleksi sederhana, bukan diagnosis atau pengganti bantuan profesional.</p>
-      </div>
-    </section>
-
-    <section class="section about-section" id="tentang">
-      <p class="eyebrow">TENTANG PROGRAM OTAK</p>
-      <h2>Belajar dengan rasa ingin tahu, bukan janji ajaib.</h2>
-      <p>Program Otak adalah konsep website edukasi untuk membahas psikologi dan ilmu saraf dengan bahasa sederhana. Materi sebaiknya merujuk pada sumber tepercaya dan membedakan bukti ilmiah dari klaim yang belum terbukti.</p>
-      <div class="about-points"><span>✓ Bahasa sederhana</span><span>✓ Latihan yang realistis</span><span>✓ Mengutamakan bukti</span></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-brand"><span>🧠</span><b>Program Otak</b><p>Pahami pikiranmu. Latih kebiasaanmu.</p></div>
-    <div class="footer-links"><a href="#beranda">Beranda</a><a href="#artikel">Artikel</a><a href="#tentang">Tentang</a></div>
-    <p class="copyright">© <span id="year"></span> Program Otak. Materi untuk edukasi umum.</p>
-  </footer>
-
-  <dialog id="articleDialog" class="article-dialog">
-    <button class="dialog-close" id="dialogClose" aria-label="Tutup">×</button>
-    <p class="eyebrow" id="dialogCategory">RINGKASAN ARTIKEL</p>
-    <h2 id="dialogTitle"></h2>
-    <p id="dialogText"></p>
-    <p class="dialog-caution">Catatan: informasi ini bersifat edukasi umum. Untuk masalah kesehatan mental yang mengganggu kehidupan sehari-hari, pertimbangkan berkonsultasi dengan tenaga profesional.</p>
-  </dialog>
-</body>
-</html>
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#081426"><meta name="description" content="Program Otak — belajar memahami pikiran dan membangun kebiasaan sehat."><title>Program Otak — Kenali Pikiranmu</title><link rel="stylesheet" href="style.css"><script src="script.js" defer></script></head>
+<body><header class="site-header"><a class="brand" href="#beranda"><span class="logo">PO</span> program<span>otak</span></a><button id="menuToggle" class="menu-toggle" aria-label="Buka menu">☰</button><nav id="siteNav"><a href="#beranda">Beranda</a><a href="#jelajahi">Jelajahi</a><a href="#latihan">Latihan</a><a href="#tentang">Tentang</a><a class="nav-cta" href="#jelajahi">Mulai belajar ↗</a></nav></header>
+<main><section class="hero wrap" id="beranda"><div><div class="eyebrow">✦ RUANG BELAJAR TENTANG PIKIRAN</div><h1>Kenali pikiranmu.<br><span>Latih dirimu.</span></h1><p class="lead">Pahami cara kerja otak, kenali kebiasaan berpikir, dan bangun perubahan kecil yang berarti—satu langkah setiap hari.</p><div class="actions"><a class="btn primary" href="#jelajahi">Jelajahi topik →</a><a class="btn secondary" href="#latihan">▷ Coba latihan</a></div><p class="note">✓ Belajar pelan-pelan, tanpa harus sempurna.</p></div><div class="hero-art"><div class="orbit"></div><div class="brain">✳</div><div class="art-tag tag-top">● NEUROPLASTISITAS</div><div class="art-tag tag-bottom">Bertumbuh lewat latihan</div><div class="float-card">↗ <span><b>Mulai dari kecil</b><small>Konsisten lebih penting</small></span></div></div></section>
+<section class="trust wrap"><span>◎ Berbasis pengetahuan</span><span>✦ Praktis untuk sehari-hari</span><span>↗ Progres tanpa tekanan</span></section>
+<section class="wrap topics" id="jelajahi"><div class="section-head"><div class="eyebrow">MULAI DARI SINI</div><h2>Jelajahi dunia pikiran</h2><p>Temukan topik yang paling dekat dengan kebutuhanmu hari ini.</p></div><div class="grid">
+<article class="card"><div class="card-top"><small>01</small><span>✳</span></div><div class="art art-brain">✳</div><label>KENALI OTAK</label><h3>Bagaimana otak bekerja?</h3><p>Kenali dasar cara otak memproses informasi, emosi, dan pengalaman.</p><button class="article-open" data-article="otak">Baca pengantar ↗</button></article>
+<article class="card"><div class="card-top"><small>02</small><span>⌁</span></div><div class="art art-network"><i></i><i></i><i></i><i></i></div><label>NEUROPLASTISITAS</label><h3>Otak bisa terus belajar</h3><p>Bagaimana latihan dan pengalaman membantu membentuk koneksi baru.</p><button class="article-open" data-article="neuro">Baca pengantar ↗</button></article>
+<article class="card"><div class="card-top"><small>03</small><span>↻</span></div><div class="art art-rings"><i></i><i></i><i></i></div><label>KEBIASAAN</label><h3>Bangun kebiasaan kecil</h3><p>Mulai dari tindakan sederhana yang realistis untuk dilakukan berulang.</p><button class="article-open" data-article="habit">Baca pengantar ↗</button></article>
+<article class="card"><div class="card-top"><small>04</small><span>✧</span></div><div class="art art-focus"><i></i></div><label>FOKUS & PIKIRAN</label><h3>Berpikir lebih jernih</h3><p>Belajar mengamati pikiran tanpa langsung mempercayai setiap pikiran.</p><button class="article-open" data-article="focus">Baca pengantar ↗</button></article></div></section>
+<section class="practice"><div class="wrap practice-grid"><div><div class="eyebrow">✦ JEDA SEJENAK</div><h2>Ubah pertanyaan,<br><span>buka kemungkinan.</span></h2><p class="lead">Kita tidak selalu bisa memilih pikiran pertama yang muncul. Namun, kita bisa belajar memeriksa pikiran itu dan memilih langkah berikutnya.</p><aside><b>✦ Ingat:</b> berpikir positif bukan berarti menyangkal masalah. Cobalah melihat situasi dengan lebih seimbang.</aside></div>
+<div class="exercise" id="latihan"><div class="exercise-top">LATIHAN REFLEKSI <span>2–3 MENIT</span></div><h3>Apa yang sedang kamu pikirkan?</h3><p>Tulis satu pikiran yang mengganggumu, lalu coba lihat dari sudut pandang lain.</p><label for="thoughtInput">Pikiran yang muncul</label><textarea id="thoughtInput" placeholder="Contoh: Aku selalu gagal saat mencoba hal baru..."></textarea><label for="reframeInput">Sudut pandang yang lebih seimbang</label><textarea id="reframeInput" placeholder="Contoh: Aku masih belajar. Apa satu hal kecil yang bisa kucoba?"></textarea><div class="exercise-actions"><button class="btn primary" id="saveReflection">Simpan di perangkat ini ↗</button><button id="clearReflection" class="clear">Kosongkan</button></div><small class="privacy">▣ Catatan disimpan hanya di browser perangkat ini, tidak dikirim ke server.</small><p id="saveStatus" role="status"></p></div></div></section>
+<section class="quote wrap"><div>“</div><blockquote>Perubahan besar tidak selalu dimulai dengan langkah besar. Terkadang, perubahan dimulai saat kita menyadari satu pola kecil.</blockquote><small>PROGRAM OTAK · BELAJAR MEMAHAMI DIRI</small></section></main>
+<footer class="wrap footer" id="tentang"><a class="brand" href="#beranda"><span class="logo">PO</span> program<span>otak</span></a><p>Ruang belajar untuk memahami otak dan melatih pola pikir secara bertahap.</p><div class="footer-bottom"><span>© <span id="year"></span> Program Otak</span><span>Dibuat untuk belajar, tumbuh, dan memahami diri.</span><a href="#beranda">Kembali ke atas ↑</a></div></footer>
+<dialog id="articleDialog"><button id="closeDialog" class="close" aria-label="Tutup">×</button><label id="dialogCategory">PENGANTAR</label><h2 id="dialogTitle"></h2><div id="dialogBody"></div><button id="dialogDone" class="btn primary">Selesai membaca</button></dialog></body></html>
